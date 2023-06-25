@@ -1,0 +1,36 @@
+type Article {
+  id: ID!
+  name: String!
+  is_completed:String!
+  deadline_date:String!
+  created_at:String!
+  
+}
+
+
+type Query {
+  article(id: ID! @eq): Article @find
+  articles: [Article!]! @paginate
+}
+
+type Mutation {
+  createArticle(
+    name: String!
+    is_completed:String! 
+    deadline_date: String!
+  ): Article @create
+}
+
+type Mutation {
+  updateArticle(
+  id:String!
+    name: String!
+    is_completed:String! 
+    deadline_date: String!
+  ): Article @update
+}
+type Mutation {
+  deleteArticle(
+  id:String!
+    ): Article @delete
+}
